@@ -84,7 +84,7 @@ def check_dna():  #First I define the function definition for handling POST requ
     except ValueError as e:  #This except isto handle any `ValueError` exceptions raised during processing.
         return jsonify({"error": str(e)}), 402  #Return a JSON response with status 402 and the error message.
 
-@app.route('/stats', methods=['GET'])  #Next I set up the '/stats' endpoint to accept GET requests.
+#@app.route('/stats', methods=['GET'])  #Next I set up the '/stats' endpoint to accept GET requests.
 #def get_stats():  #This other function definition is for handling GET requests at the '/stats' endpoint.
     #total_mutants = DNAResult.query.filter_by(is_mutant=True).count()  #First I count the number of mutant DNA results in the database.
     #total_humans = DNAResult.query.filter_by(is_mutant=False).count()  #Second I count the number of human DNA results in the database.
