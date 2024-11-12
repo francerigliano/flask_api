@@ -60,6 +60,10 @@ def isMutant(dna_sequence):
 
     return coincidences, False  #If no match or only one match is found, then return False
 
+@app.route('/') #Simple helper for me
+def home():
+    return "Welcome to the Flask API by Francisco Cerigliano"
+
 @app.route('/mutant', methods=['POST'])  #Now I set up the '/mutant' endpoint to accept POST requests.
 def check_dna():  #First I define the function definition for handling POST requests at the '/mutant' endpoint.
     try:
