@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__) #Now I create the instance of Flask application
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://francerigliano:Zzxq2rQr1nhnOmOhNXMTLpSKw16oPckR@dpg-cspdfg3tq21c739rtbo0-a/dna_verification' #Then I make the necessary SQL Alchemy configurations, I name the local sqlite database as dna_verification.db
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://francerigliano:Zzxq2rQr1nhnOmOhNXMTLpSKw16oPckR@dpg-cspdfg3tq21c739rtbo0-a/dna_verification' #Then I make the necessary SQL Alchemy configurations, I name the local postgre database as dna_verification
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False #This is to prevent warnings related to Flask-SQLAlchemy
 db = SQLAlchemy(app) #Afterwards I initialize SQLAlchemy with the Flask app for database management.
 
