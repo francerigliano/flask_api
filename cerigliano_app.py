@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__) #Now I create the instance of Flask application
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://francerigliano:Zzxq2rQr1nhnOmOhNXMTLpSKw16oPckR@dpg-cspdfg3tq21c739rtbo0-a/dna_verification' #Then I make the necessary SQL Alchemy configurations, I name the local sqlite database as dna_verification.db
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False #This is to prevent warnings related to Flask-SQLAlchemy
 db = SQLAlchemy(app) #Afterwards I initialize SQLAlchemy with the Flask app for database management.
 
 class DNAResult(db.Model): #Class that creates the database model
@@ -27,7 +28,7 @@ def isMutant(dna_sequence):
             raise ValueError("Matrix contains invalid characters. Only A, T, C, G are allowed.")
     
     def count_matches_in_direction(x, y, dx, dy):
-        # Start from the initial position (x, y) and get the character at that position
+        #This function starts from the initial position (x, y) and get the character at that position
         char = dna_sequence[x][y]
         count = 1  # Initialize match count to 1 to include the starting position
 
@@ -84,7 +85,7 @@ def check_dna():  #First I define the function definition for handling POST requ
     except ValueError as e:  #This except isto handle any `ValueError` exceptions raised during processing.
         return jsonify({"error": str(e)}), 402  #Return a JSON response with status 402 and the error message.
 
-#@app.route('/stats', methods=['GET'])  #Next I set up the '/stats' endpoint to accept GET requests.
+@app.route('/stats', methods=['GET'])  #Next I set up the '/stats' endpoint to accept GET requests.
 def get_stats():  #This other function definition is for handling GET requests at the '/stats' endpoint.
     total_mutants = DNAResult.query.filter_by(is_mutant=True).count()  #First I count the number of mutant DNA results in the database.
     total_humans = DNAResult.query.filter_by(is_mutant=False).count()  #Second I count the number of human DNA results in the database.
