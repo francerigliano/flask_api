@@ -8,7 +8,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False #This is to prevent warning
 db = SQLAlchemy(app) #Afterwards I initialize SQLAlchemy with the Flask app for database management.
 
 class DNAResult(db.Model): #Class that creates the database model
-     __tablename__ = 'dna_result'
+    __tablename__ = 'dna_result'
     id = db.Column(db.Integer, primary_key=True) #ID column as an auto-incrementing integer, its also the primary key
     is_mutant = db.Column(db.Boolean, nullable=False) #Boolean column that indicates if its Mutant or not
 
